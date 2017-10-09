@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 	// Init tty
 	rpmsgfd = rpmsg_init();
 	if (rpmsgfd == EXIT_FAILURE) {
-		printf("Error\n");
+		printf("Please insert the imx_rpmsg_tty module\n");
 		exit(EXIT_FAILURE);
 	}
 	
