@@ -2,7 +2,7 @@
  * rpmsg-test.c
  * This file is part of <rpmsg-test>
  *
- * Copyright (C) 2017 - pjtexier
+ * Copyright (C) 2017 - Pierre-Jean Texier <texier.pj2@gmail.com>
  *
  * <rpmsg-test> is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 		{"RL1", 	required_argument, 		NULL, 'r' },		
 		{"RL2", 	required_argument, 		NULL, 'l' },
 		{"help", 	no_argument, 			NULL, 'h' },
-		{0, 			0, 			0, 	0 }
+		{0, 		0, 				0, 	0 }
 	};
 			
 	while ((opt = getopt_long(argc, argv, "r:l:h", option, &long_index)) >= 0) {
