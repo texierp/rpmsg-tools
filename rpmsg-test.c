@@ -127,9 +127,13 @@ int main(int argc, char *argv[])
 	ret = read(rpmsgfd, rx_buffer, sizeof(rx_buffer));
 	if(ret > 0)
 		printf("received from cortex M4 = %s", rx_buffer);
-	else 
+	else
 		return EXIT_FAILURE;
+		
+	close(rpmsgfd);
 	
 	return EXIT_SUCCESS;
 }
+
+
 
