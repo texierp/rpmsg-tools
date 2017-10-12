@@ -37,7 +37,8 @@ static void display_help(const char * name)
 	fprintf(stderr, " options:\n");
 	fprintf(stderr, " -r --RL1\n");
 	fprintf(stderr, " -l --RL2 \n");
-	fprintf(stderr, " -e --eeprom \n");
+	fprintf(stderr, " -e --out_eeprom=ID \n");
+	fprintf(stderr, " -i --in_eeprom=ID \n");
 	fprintf(stderr, " -h --help Prints this help\n\n");
 	fprintf(stderr, "Example: %s --RL1=1\n\n", name);
 }
