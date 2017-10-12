@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
 	int len = 0;
 	int ret = 0;
 	int opt = 0;
+	int slaveID = 0;
 	int long_index = 0;
 	char tx_buffer[512] = {0};
 	char rx_buffer[512] = {0};
@@ -112,7 +113,10 @@ int main(int argc, char *argv[])
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_RL2:%s", optarg);	
 				break;
 			case 'e':
-				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_eeprom:%s", optarg);	
+				slaveID = atoi(optarg);
+				if (slaveID > 254)
+					slaveID = 1;
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_eeprom:%d", slaveID);	
 				break;
 			case 'h':
 				display_help(argv[0]);
