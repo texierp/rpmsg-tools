@@ -1,6 +1,8 @@
 rpmsg-tools
 ===========
 
+- Used with: [Freertos relay-click example](https://github.com/texierp/freertos-warp7/blob/master/examples/imx7s_warp_m4/demo_apps/rpmsg/relay-click/relay-click.c);
+
 # Examples
 
 * RL1 ON
