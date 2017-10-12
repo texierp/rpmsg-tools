@@ -99,12 +99,14 @@ int main(int argc, char *argv[])
 	{
 		{"RL1", 	required_argument, 		NULL, 'r' },		
 		{"RL2", 	required_argument, 		NULL, 'l' },
-		{"eeprom", 	required_argument, 		NULL, 'e' },
+		{"out_eeprom", 	required_argument, 		NULL, 'e' },
+		{"in_eeprom", 	no_argument, 			NULL, 'i' },
+		{"in_INT_FLAME",no_argument, 			NULL, 'f' },
 		{"help", 	no_argument, 			NULL, 'h' },
 		{0, 		0, 				0, 	0 }
 	};
 			
-	while ((opt = getopt_long(argc, argv, "r:l:e:h", option, &long_index)) >= 0) {
+	while ((opt = getopt_long(argc, argv, "r:l:e:ifh", option, &long_index)) >= 0) {
 		switch(opt) {
 			case 'r':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_RL1:%s", optarg);	
@@ -117,6 +119,12 @@ int main(int argc, char *argv[])
 				if (slaveID > 254)
 					slaveID = 1;
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_eeprom:%d", slaveID);	
+				break;
+			case 'i':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "?in_eeprom");	
+				break;
+			case 'f':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "?in_INT_FLAME");	
 				break;
 			case 'h':
 				display_help(argv[0]);
