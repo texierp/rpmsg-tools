@@ -37,6 +37,7 @@ static void display_help(const char * name)
 	fprintf(stderr, " options:\n");
 	fprintf(stderr, " -r --RL1\n");
 	fprintf(stderr, " -l --RL2 \n");
+	fprintf(stderr, " -e --eeprom \n");
 	fprintf(stderr, " -h --help Prints this help\n\n");
 	fprintf(stderr, "Example: %s --RL1=1\n\n", name);
 }
@@ -97,17 +98,21 @@ int main(int argc, char *argv[])
 	{
 		{"RL1", 	required_argument, 		NULL, 'r' },		
 		{"RL2", 	required_argument, 		NULL, 'l' },
+		{"eeprom", 	required_argument, 		NULL, 'e' },
 		{"help", 	no_argument, 			NULL, 'h' },
 		{0, 		0, 				0, 	0 }
 	};
 			
-	while ((opt = getopt_long(argc, argv, "r:l:h", option, &long_index)) >= 0) {
+	while ((opt = getopt_long(argc, argv, "r:l:e:h", option, &long_index)) >= 0) {
 		switch(opt) {
 			case 'r':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_RL1:%s", optarg);	
 				break;
 			case 'l':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_RL2:%s", optarg);	
+				break;
+			case 'e':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_eeprom:%s", optarg);	
 				break;
 			case 'h':
 				display_help(argv[0]);
