@@ -35,10 +35,14 @@ static void display_help(const char * name)
 {
     	fprintf(stderr, "usage: %s options...\n", name);
 	fprintf(stderr, " options:\n");
-	fprintf(stderr, " -r --RL1\n");
-	fprintf(stderr, " -l --RL2 \n");
+	fprintf(stderr, " -r --RL1=(0|1)\n");
+	fprintf(stderr, " -l --RL2=(0|1) \n");
+	fprintf(stderr, " -g --LED=(0|1) \n");
+	fprintf(stderr, " -o --c02 \n");
+	fprintf(stderr, " -s --status \n");
+	fprintf(stderr, " -t --tvoc \n");
 	fprintf(stderr, " -e --out_eeprom=ID \n");
-	fprintf(stderr, " -i --in_eeprom=ID \n");
+	fprintf(stderr, " -i --in_eeprom \n");
 	fprintf(stderr, " -h --help Prints this help\n\n");
 	fprintf(stderr, "Example: %s --RL1=1\n\n", name);
 }
@@ -101,13 +105,17 @@ int main(int argc, char *argv[])
 		{"RL1", 	required_argument, 		NULL, 'r' },		
 		{"RL2", 	required_argument, 		NULL, 'l' },
 		{"out_eeprom", 	required_argument, 		NULL, 'e' },
+		{"LED", 	required_argument, 		NULL, 'g' },
 		{"in_eeprom", 	no_argument, 			NULL, 'i' },
+		{"c02", 	no_argument, 			NULL, 'o' },
+		{"status", 	no_argument, 			NULL, 's' },
+		{"tvoc", 	no_argument, 			NULL, 't' },
 		{"in_INT_FLAME",no_argument, 			NULL, 'f' },
 		{"help", 	no_argument, 			NULL, 'h' },
 		{0, 		0, 				0, 	0 }
 	};
 			
-	while ((opt = getopt_long(argc, argv, "r:l:e:ifh", option, &long_index)) >= 0) {
+	while ((opt = getopt_long(argc, argv, "r:g:l:e:icotfh", option, &long_index)) >= 0) {
 		switch(opt) {
 			case 'r':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_RL1:%s", optarg);	
@@ -115,11 +123,23 @@ int main(int argc, char *argv[])
 			case 'l':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_RL2:%s", optarg);	
 				break;
+			case 'g':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_LED:%s", optarg);	
+				break;
 			case 'e':
 				slaveID = atoi(optarg);
 				if (slaveID > 254)
 					slaveID = 1;
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_eeprom:%d", slaveID);	
+				break;
+			case 'o':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "?co2");	
+				break;
+			case 's':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "?status");	
+				break;
+			case 't':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "?tvoc");	
 				break;
 			case 'i':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "?in_eeprom");	
