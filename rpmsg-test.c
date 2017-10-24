@@ -38,7 +38,7 @@ static void display_help(const char * name)
 	fprintf(stderr, " -r --RL1=(0|1)\n");
 	fprintf(stderr, " -l --RL2=(0|1) \n");
 	fprintf(stderr, " -g --LED=(0|1) \n");
-	fprintf(stderr, " -o --c02 \n");
+	fprintf(stderr, " -o --co2 \n");
 	fprintf(stderr, " -s --status \n");
 	fprintf(stderr, " -t --tvoc \n");
 	fprintf(stderr, " -e --out_eeprom=ID \n");
