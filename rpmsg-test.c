@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
 		{"out_eeprom", 	required_argument, 		NULL, 'e' },
 		{"LED", 	required_argument, 		NULL, 'g' },
 		{"in_eeprom", 	no_argument, 			NULL, 'i' },
-		{"c02", 	no_argument, 			NULL, 'o' },
+		{"co2", 	no_argument, 			NULL, 'o' },
 		{"status", 	no_argument, 			NULL, 's' },
 		{"tvoc", 	no_argument, 			NULL, 't' },
 		{"in_INT_FLAME",no_argument, 			NULL, 'f' },
