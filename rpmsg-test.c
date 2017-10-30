@@ -41,6 +41,7 @@ static void display_help(const char * name)
 	fprintf(stderr, " -o --co2 \n");
 	fprintf(stderr, " -s --status \n");
 	fprintf(stderr, " -t --tvoc \n");
+	fprintf(stderr, " -a --all \n");
 	fprintf(stderr, " -e --out_eeprom=ID \n");
 	fprintf(stderr, " -i --in_eeprom \n");
 	fprintf(stderr, " -h --help Prints this help\n\n");
@@ -110,6 +111,7 @@ int main(int argc, char *argv[])
 		{"co2", 	no_argument, 			NULL, 'o' },
 		{"status", 	no_argument, 			NULL, 's' },
 		{"tvoc", 	no_argument, 			NULL, 't' },
+		{"all", 	no_argument, 			NULL, 'a' },
 		{"in_INT_FLAME",no_argument, 			NULL, 'f' },
 		{"help", 	no_argument, 			NULL, 'h' },
 		{0, 		0, 				0, 	0 }
@@ -140,6 +142,9 @@ int main(int argc, char *argv[])
 				break;
 			case 't':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "?tvoc");	
+				break;
+			case 'a':
+				len = snprintf(tx_buffer, sizeof(tx_buffer), "?getAirQuality");	
 				break;
 			case 'i':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "?in_eeprom");	
