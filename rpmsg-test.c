@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
 		{0, 		0, 				0, 	0 }
 	};
 			
-	while ((opt = getopt_long(argc, argv, "r:g:l:e:icotfh", option, &long_index)) >= 0) {
+	while ((opt = getopt_long(argc, argv, "r:g:l:e:icotafh", option, &long_index)) >= 0) {
 		switch(opt) {
 			case 'r':
 				len = snprintf(tx_buffer, sizeof(tx_buffer), "!out_RL1:%s", optarg);	
